@@ -1,15 +1,14 @@
 
- 
-pipeline {
+ pipeline {
     agent none
  
-    environment {
-       registryName = " myContainerAzureRegistry"
-       registryUrl = 'mycontainerazureregistry.azurecr.io'
-       registryCredential = 'ACR'
-       dockerImage = ' '
-    }
- 
+        environment {
+        registryName = 'myarureregistry'
+        registryUrl = 'myarureregistry.azurecr.io'
+        registryCredential = 'ACR'
+        dockerImage = ' '
+        }
+    
     stages {    
             
             stage( ' Build - Maven package ' ){
@@ -36,7 +35,7 @@ pipeline {
               
                 steps{   
                     sh 'docker.withRegistry( "http://${registryUrl}", registryCredential ) {
-                        dockerImage.push()'
+                        dockerpetclinic:v01.push()'
                     
                 }
                 

@@ -1,5 +1,5 @@
 
- pipeline {
+pipeline {
     agent none
  
         environment {
@@ -26,7 +26,7 @@
                 agent any
                      steps {
                        echo 'bonjour'
-                       sh ' docker build -t dockerpetclinic:v01 . '
+                       sh ' dockerImage = docker build -t dockerpetclinic:v01 . '
                          
                 }    
                          
@@ -35,7 +35,7 @@
               
                 steps{   
                     sh 'docker.withRegistry( "http://${registryUrl}", registryCredential ) {
-                        dockerpetclinic:v01.push()'
+                        dockerImage.push()'
                     
                 }
                 
@@ -45,4 +45,3 @@
     }
     
 }
-

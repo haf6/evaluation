@@ -29,7 +29,9 @@ pipeline {
                  agent any
                      steps {
                        echo 'bonjour'
-                     
+                       sh ' az acr login --name myContainerAzureRegistry '
+                       sh ' docker tag dockerpetclinic mycontainerazureregistry.azurecr.io/dockerpetclinic:v01'
+
                      
                          
                     }    

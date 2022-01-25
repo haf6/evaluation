@@ -1,14 +1,15 @@
 
  
-
 pipeline {
     agent none
  
     environment {
        registryName = " myContainerAzureRegistry"
-                }
+       registryUrl = 'mycontainerazureregistry.azurecr.io'
+       registryCredential = 'ACR'
+       dockerImage = ' '
+    }
 
- 
  
  
     stages {    
@@ -33,48 +34,20 @@ pipeline {
                     }    
                          
             }
-            stage( 'deployment vers azure registry  ' ){
-                 agent any
-                     steps {
-                       echo 'bonjour'
-                         #sh ' az login '
-
-                         #sh ' az acr login --name myContainerAzureRegistry '
-                        # sh ' docker tag dockerpetclinic mycontainerazureregistry.azurecr.io/dockerpetclinic:v01'
-
-                     
-                         
-                    }    
+            stage( 'Upload Image to ACR ' ){
+              
+                steps{   
+                    sh 'docker.withRegistry( "http://${registryUrl}", registryCredential ) {
+                        dockerImage.push()'
+                    
+                }
+                
                          
             }
                 
-   }
+    }
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

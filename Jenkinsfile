@@ -30,7 +30,7 @@ pipeline {
                      steps {
                        echo 'bonjour'
                      
-                        sh ' docker tag dockerpetclinic mycontainerazureregistry.azurecr.io /dockerpetclinic:v01'
+                        sh ' docker tag  mycontainerazureregistry.azurecr.io/dockerpetclinic:v01'
                          
                     }    
                          

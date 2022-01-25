@@ -1,4 +1,5 @@
 
+
 pipeline {
     agent none
  
@@ -26,8 +27,8 @@ pipeline {
                 agent any
                      steps {
                        echo 'bonjour'
-                       sh ' dockerImage = docker build -t dockerpetclinic:v01 . '
-                         
+                       sh ' docker build -t dockerpetclinic:v01 . '
+                       sh ' dockerImage = docker.build registryName '
                 }    
                          
             }

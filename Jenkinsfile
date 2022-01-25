@@ -7,7 +7,7 @@ pipeline {
                  agent any
                      steps {
                        echo 'bonjour'
-                    
+                       sh ' mvn -version '
                         }
         }
             }

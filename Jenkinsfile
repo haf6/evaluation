@@ -3,6 +3,14 @@
 
 pipeline {
     agent none
+ 
+    environment {
+       registryName = " myContainerAzureRegistry"
+                }
+
+ 
+ 
+ 
     stages {    
             
             stage( ' Build - Maven package ' ){
@@ -29,10 +37,10 @@ pipeline {
                  agent any
                      steps {
                        echo 'bonjour'
-                         sh ' az login '
+                         #sh ' az login '
 
-                         sh ' az acr login --name myContainerAzureRegistry '
-                         sh ' docker tag dockerpetclinic mycontainerazureregistry.azurecr.io/dockerpetclinic:v01'
+                         #sh ' az acr login --name myContainerAzureRegistry '
+                        # sh ' docker tag dockerpetclinic mycontainerazureregistry.azurecr.io/dockerpetclinic:v01'
 
                      
                          

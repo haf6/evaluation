@@ -4,7 +4,7 @@ pipeline
     agent none
     environment
     {
-        MYSQL_SERVER_IP='mysqldevops.mysql.database.azure.com'
+        MYSQL_SERVER_IP='sq1.mysql.database.azure.com'
         MYSQL_USERNAME='hafidha'
         MYSQL_PASSWORD='hamouda@@1981'
     }
@@ -44,8 +44,8 @@ pipeline
         stage('build imageDocker') 
         {   agent any 
             steps {
-              sh 'docker build -t petclinic:v1.0 .'
-              sh ' docker run --network="host" -d --name petclinic petclinic:v1.0 '
+              sh 'docker build -t petclinic:v01 .'
+              sh ' docker run --network="host" -d --name petclinic petclinic:v01 '
 
                
                   }

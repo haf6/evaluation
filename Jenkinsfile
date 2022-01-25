@@ -28,7 +28,7 @@ pipeline
         { 
             agent
             {  
-                 docker { image 'maven:3.8.4-jdk-11' }  
+                 docker { image 'maven:3.8.4-jdk-amd64' }  
             } 
             steps  
             { 

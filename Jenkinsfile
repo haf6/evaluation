@@ -8,6 +8,7 @@ pipeline {
                      steps {
                        echo 'bonjour'
                        sh ' mvn -version '
+                        sh 'mvn clean package'  
                         }
         }
             }

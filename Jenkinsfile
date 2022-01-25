@@ -1,5 +1,7 @@
 
-  pipeline {
+ 
+
+pipeline {
     agent none
     stages {    
             
@@ -14,7 +16,7 @@
                        
               }
         
-            stage( ' gener image docker application ' ){
+            stage( ' génerer image docker application ' ){
                  agent any
                      steps {
                        echo 'bonjour'
@@ -23,12 +25,20 @@
                     }    
                          
             }
+            stage( 'deployment vers azure registry  ' ){
+                 agent any
+                     steps {
+                       echo 'bonjour'
+                       sh ' az acr login --name myContainerAzureRegistry '
+                        sh ' docker tag dockerpetclinic mycontainerazureregistry.azurecr.io /dockerpetclinic:v01'
+                         
+                    }    
+                         
+            }
                 
    }
     
 }
-
-
 
 
 

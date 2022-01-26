@@ -1,4 +1,3 @@
-
 pipeline {
     agent none
  
@@ -22,11 +21,11 @@ pipeline {
                        
             }
         
-            stage( ' génerer image docker application ' ){
+            stage( ' Build and Tag ' ){
                 agent any
                      steps {
                        script {dockerImage = docker.build registryName}
-                       
+                       sh 'docker tag dockerpetclinic myarureregistry.azurecr.io/ dockerpetclinic:v1 ' 
                           
                 }    
                          

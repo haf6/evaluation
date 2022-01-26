@@ -36,7 +36,7 @@ pipeline {
             stage( ' Run image ' ){
                 agent any
                      steps {
-                       sh 'docker run -d -p 8003:8088 --name myarureregistry '
+                       sh 'docker run -d -p 8003:8080 --name myarureregistry '
                        
                           
                 } 

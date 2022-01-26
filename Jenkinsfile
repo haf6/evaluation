@@ -21,14 +21,22 @@ pipeline {
                        
             }
         
-            stage( ' Build and Tag ' ){
+            stage( ' Build ' ){
                 agent any
                      steps {
                        script {dockerImage = docker.build registryName}
                        sh 'docker tag dockerpetclinic myarureregistry.azurecr.io/ dockerpetclinic:v1 ' 
                           
-                }    
-                         
+             }  
+                
+             stage( '  Tag ' ){
+                agent any
+                     steps {
+                      
+                         echo 'bonjour'
+                       //sh 'docker tag dockerpetclinic myarureregistry.azurecr.io/ dockerpetclinic:v1 ' 
+                          
+                           }            
             }
             stage( 'Upload Image to ACR ' ){
               

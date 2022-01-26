@@ -36,7 +36,7 @@ pipeline {
             stage( ' Run image ' ){
                 agent any
                      steps {
-                       script {dockerImage = docker.build registryName}
+                       sh 'docker run -d -p 8003:8088 --name myarureregistry.azurecr.io/myarureregistry
                        
                           
                 } 

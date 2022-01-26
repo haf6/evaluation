@@ -2,14 +2,7 @@
 
 pipeline {
     agent none
- 
-        environment {
-        registryName = 'myarureregistry'
-        registryUrl = 'myarureregistry.azurecr.io'
-        registryCredential = 'ACR'
-        dockerImage = ' '
-        }
-    
+     
     stages {    
             
             stage( ' Build - Maven package ' ){
@@ -36,9 +29,7 @@ pipeline {
               
                 steps{ 
                     echo 'bonjour'
-                    sh 'docker.withRegistry( "http://${registryUrl}", registryCredential ) {
-                        docker image push()'
-                    
+                   
                 }
                 
                          

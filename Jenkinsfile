@@ -1,27 +1,15 @@
 pipeline {
     agent none
+ 
+        environment {
+        registryName = 'myarureregistry'
+        registryUrl = 'myarureregistry.azurecr.io'
+        registryCredential = 'ACR'
+        dockerImage = ' '
+        }
     
-    
-    
-    
-     
     stages {    
             
-        stage('Hello') 
-        {   agent any 
-            steps {
-                echo 'Hello World'
-                sh 'docker ps -aq | xargs --no-run-if-empty docker stop' 
-                echo ' remove all docker containers' 
-                sh 'docker ps -aq | xargs --no-run-if-empty docker rm'
-               
-                  }
-            
-        }
-        
-        
-        
-        
             stage( ' Build - Maven package ' ){
                 agent any
                      steps {
@@ -33,19 +21,23 @@ pipeline {
                        
             }
         
-            stage( ' Generate docker application image ' ){
+            stage( ' génerer image docker application ' ){
                 agent any
                      steps {
-                       echo 'bonjour'
-                       sh ' docker build -t dockerpetclinic:v01 . '
-                      
+                       script {dockerImage = docker.build registryName}
+                       
+                         
                 }    
                          
             }
             stage( 'Upload Image to ACR ' ){
               
                 steps{ 
-                    echo 'bonjour'
+
+                     script {
+                         docker.withRegistry( "http://${registryUrl}", registryCredential ) {
+
+                        dockerImage.push()} 
                    
                 }
                 
@@ -54,4 +46,5 @@ pipeline {
                 
     }
     
+}
 }

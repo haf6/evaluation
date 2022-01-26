@@ -35,7 +35,7 @@ pipeline {
             stage( ' tag image ' ){
                  agent any
                      steps {
-                    sh 'docker tag dockerpetclinic  myarureregistry.azurecr.io/petclinic:v1 ' 
+                    sh 'docker tag myarureregistry   myarureregistry.azurecr.io/petclinic:v1 ' 
                                 
                                     
                             }    

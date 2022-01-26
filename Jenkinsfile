@@ -1,49 +1,25 @@
 
 pipeline {
-    agent none
- 
-        environment {
-        registryName = 'myarureregistry'
-        registryUrl = 'myarureregistry.azurecr.io'
-        registryCredential = 'ACR'
-        dockerImage = ' '
-        }
-    
-    stages {    
-            
-            stage( ' Build - Maven package ' ){
-                agent any
-                     steps {
-                       echo 'bonjour'
-                       sh ' mvn -version '
-                        sh 'mvn clean package -P MySQL '  
-                }
-                     
-                       
-            }
+    agent any 
+    environment {
         
-            stage( ' génerer image docker application ' ){
-                agent any
-                     steps {
-                       echo 'bonjour'
-                       
-                       sh ' dockerImage = docker.build registryName '
-                }    
-                         
-            }
-            stage( 'Upload Image to ACR ' ){
-              
-                steps{  
-                    container('docker')
-                    sh 'docker.withRegistry( "http://${registryUrl}", registryCredential ) {
-                        dockerImage.push()'
-                    
-                }
-                
-                         
-            }
-                
+        registry = "haf9/dockerpetclinic"
+        registryCredential = 'fa32f95a-2d3e-4c7b-8f34-11bcc0191d70'
+        dockerImage = ''
     }
     
-}
-
+    stages {
+        stage('Cloning Git') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '', url: 'https://bitbucket.org/ananthkannan/mypythonrepo']]])       
+            }
+        }
+    
+    // Building Docker images
+    stage('Building image') {
+      steps{
+        script {
+          dockerImage = docker.build registry
+        }
+      }
+    }

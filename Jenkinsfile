@@ -21,7 +21,7 @@ pipeline {
                        
             }
         
-            stage( ' génerer image docker application ' ){
+            stage( ' Build docker Image ' ){
                 agent any
                      steps {
                        script {dockerImage = docker.build registryName}

@@ -1,3 +1,4 @@
+
 pipeline {
     agent none
  
@@ -21,7 +22,7 @@ pipeline {
                        
             }
         
-            stage( ' Build docker Image ' ){
+            stage( ' génerer image docker application ' ){
                 agent any
                      steps {
                        script {dockerImage = docker.build registryName}
@@ -43,17 +44,6 @@ pipeline {
                 
                          
             }
-                
-             stage('test Docker Run') {
-                     steps{
-                         script {
-                                sh 'docker run -d -p 8096:5000 --rm --name myarureregistry
-                ${registryUrl}/${registryName}'
-              }
-             }
-   
-                
-                
                 
     }
     

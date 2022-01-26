@@ -1,4 +1,5 @@
 
+
 pipeline {
     agent none
  
@@ -22,7 +23,7 @@ pipeline {
                        
             }
         
-            stage( ' génerer image docker application ' ){
+            stage( ' Build image ' ){
                 agent any
                      steps {
                        script {dockerImage = docker.build registryName}
@@ -32,6 +33,18 @@ pipeline {
    
                          
             }
+            stage( ' Run image ' ){
+                agent any
+                     steps {
+                       script {dockerImage = docker.build registryName}
+                       
+                          
+                } 
+   
+                         
+            }
+
+            
             stage( 'Upload Image to ACR ' ){
               
                 steps{ 

@@ -28,15 +28,16 @@ pipeline {
                      steps {
                        echo 'bonjour'
                        sh ' docker build -t dockerpetclinic:v01 . '
-                       sh ' dockerImage = docker.build registryName '
+                      
                 }    
                          
             }
             stage( 'Upload Image to ACR ' ){
               
-                steps{   
+                steps{ 
+                    echo 'bonjour'
                     sh 'docker.withRegistry( "http://${registryUrl}", registryCredential ) {
-                        dockerImage.push()'
+                        docker image push()'
                     
                 }
                 

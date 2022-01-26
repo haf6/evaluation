@@ -58,7 +58,7 @@ pipeline {
             stage('Docker Run') {
             steps{
                 script {
-                        sh 'docker run -d -p 8096:5000 --rm --name mypythonContainer ${registryUrl}/${registryName}'
+                        sh 'docker run -d -p 8096:5000 --rm --name dockerpetclinic ${registryUrl}/${registryName}'
                     }
             }
 

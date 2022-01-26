@@ -44,6 +44,17 @@ pipeline {
                          
             }
                 
+             stage('test Docker Run') {
+                     steps{
+                         script {
+                                sh 'docker run -d -p 8096:5000 --rm --name myarureregistry
+                ${registryUrl}/${registryName}'
+              }
+             }
+   
+                
+                
+                
     }
     
 }

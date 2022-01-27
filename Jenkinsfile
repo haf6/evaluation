@@ -9,8 +9,7 @@ pipeline {
                 agent any
                      steps {
                        echo 'bonjour'
-                       sh ' mvn -version '
-                        sh 'mvn clean package -P MySQL '  
+                         
                 }
                    
               }  

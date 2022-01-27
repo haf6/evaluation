@@ -10,8 +10,9 @@ pipeline {
                      steps {
                        echo 'bonjour'
                          
-                }
+                           }
                    
-              }  
+              } 
+        }  
                        
   }          

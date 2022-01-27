@@ -64,7 +64,7 @@ pipeline {
                 
                     steps
                     {
-                    sh 'kubectl apply -f deploy.yaml '
+                    sh 'kubectl apply -f fichier.yaml '
                     }
                 
                 }

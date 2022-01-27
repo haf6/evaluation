@@ -1,5 +1,4 @@
 
-
 pipeline {
     agent none
  
@@ -23,19 +22,15 @@ pipeline {
                        
             }
         
-            stage( ' Build image ' ){
+            stage( ' génerer image docker application ' ){
                 agent any
                      steps {
                        script {dockerImage = docker.build registryName}
                        
-                          
-                } 
-   
+                         
+                }    
                          
             }
-            
-
-            
             stage( 'Upload Image to ACR ' ){
               
                 steps{ 
@@ -49,8 +44,35 @@ pipeline {
                 
                          
             }
+
+            stage('Prepare Environment') {
+                
+                agent any
+                
+                steps
+                    {
+                
+                        sh 'az login --service-principal -u 88d3fa11-75c0-45ac-a867-0b5c0fa27456 -p sRmTNQSaeyoHVs9nitI~Y7tyJLWYdoX62x -t d1859195-72dc-49c3-a815-5d4106a85dfb'
+                        
+                        sh 'az aks get-credentials --resource-group groupebase --name AKSCLUSTER --overwrite-existing'
+                    }
+            }      
+                    
+
+            stage('Deploy') {
+                agent any
+                
+                    steps
+                    {
+                    sh 'kubectl apply -f deploy.yaml '
+                    }
+                
+                }
+
+            }
+
+
                 
     }
     
-}
 }

@@ -511,7 +511,7 @@
                 <db.script>mysql</db.script>
                 <jpa.database>MYSQL</jpa.database>
                 <jdbc.driverClassName>com.mysql.cj.jdbc.Driver</jdbc.driverClassName>
-                <jdbc.url>String url="jdbc:mysql://sq1.mysql.database.azure.com:3306/{your_database}?useSSL=true";myDbConn=DriverManager.getConnection(url, "hafidha", "{your_password}");</jdbc.url>
+                <jdbc.url><jdbc.url><![CDATA[jdbc:mysql://sq1.mysql.database.azure.com:3306/petclinic?useUnicode=true&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=CET]]></jdbc.url>word}");</jdbc.url>
                 <jdbc.username>hafidha</jdbc.username>
                 <jdbc.password>hamouda@@1981</jdbc.password>
             </properties>

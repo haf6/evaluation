@@ -1,4 +1,3 @@
-
 pipeline {
     agent none
  
@@ -22,19 +21,25 @@ pipeline {
                        
             }
         
-            stage( ' Build image ' ){
+            stage( ' génerer image docker application ' ){
                 agent any
                      steps {
                        script {dockerImage = docker.build registryName}
                        
-                          
-                } 
-   
+                         
+                }    
                          
             }
-            
+            stage ( 'Run JMeter Test' ){
+                    agent any
+                    steps 
+                    { sh "/home/hafidha/Téléchargements/apache-jmeter-5.3/bin/jmeter -Jjmeter.save.saveservice.output_format=xml -n -t src/test/jmeter/plan_wartest.jmx -l test.jtl"
+                    step([$class: 'ArtifactArchiver', artifacts: 'test.jtl'])
+                    perfReport 'test.jtl'
+                    }
+            }
 
-            
+
             stage( 'Upload Image to ACR ' ){
               
                 steps{ 
@@ -44,10 +49,11 @@ pipeline {
 
                         dockerImage.push()} 
                    
-                    }
                 }
+                
                          
             }
+
             stage('Prepare Environment') {
                 
                 agent any
@@ -55,7 +61,7 @@ pipeline {
                 steps
                     {
                 
-                        sh 'az login --service-principal -u 085b75a2-504b-4099-a812-f9662270ddd5 -p J7N5WTR.ym-Hhc~KXUHDwk2-tBiSjeZ34W -t d1859195-72dc-49c3-a815-5d4106a85dfb'
+                        sh 'az login --service-principal -u 88d3fa11-75c0-45ac-a867-0b5c0fa27456 -p sRmTNQSaeyoHVs9nitI~Y7tyJLWYdoX62x -t d1859195-72dc-49c3-a815-5d4106a85dfb'
                         
                         sh 'az aks get-credentials --resource-group mongroupeaks  --name aksclusterPC  --overwrite-existing'
                     }
@@ -72,16 +78,10 @@ pipeline {
                 
             }
 
-
-
-
-
-
-
-
+            
 
 
                 
-        }
+    }
     
 }

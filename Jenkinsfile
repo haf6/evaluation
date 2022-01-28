@@ -2,7 +2,7 @@
 pipeline {
     agent none
  
-      
+        stages { 
            stage ( 'Run JMeter Test' ){
                 agent any
                 
@@ -14,7 +14,7 @@ pipeline {
 
            }
 
-
+ }
 
 
 

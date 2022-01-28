@@ -34,17 +34,17 @@ pipeline {
 
             stage( 'Upload Image to ACR ' ){
               
-                steps{ 
+                steps { 
 
                      script {
                          docker.withRegistry( "http://${registryUrl}", registryCredential ) {
 
                         dockerImage.push()} 
                    
-                }
+                            }
                 
                          
-            }
+                }
 
             stage('Prepare Environment') {
                 

@@ -29,8 +29,9 @@ pipeline {
                          
                 }    
                          
-            }
-            
+    
+
+
             stage( 'Upload Image to ACR ' ){
               
                 steps{ 

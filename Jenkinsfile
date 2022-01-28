@@ -1,6 +1,6 @@
 
 
-pipeline {
+pipeline{
     agent none
  
         environment {
@@ -10,7 +10,7 @@ pipeline {
         dockerImage = ' '
         }
     
-    stages {    
+    stages{     
             
             stage( ' Build - Maven package ' ){
                 agent any
@@ -21,7 +21,7 @@ pipeline {
                 }
                  
                 
-                 stage ( 'Run JMeter Test' ){
+                stage ( 'Run JMeter Test' ){
                 agent any
                 
                     steps { sh "/home/hafidha/apache-jmeter-5.3/bin/jmeter -Jjmeter.save.saveservice.output_format=xml -n -t src/test/jmeter/petclinic_test_plan.jmx -l test.jtl"
@@ -31,18 +31,14 @@ pipeline {
 
                     }
 
-            
+                }
 
             }
 
-                
-                
-                
-                
-                
+             
                 
                        
-            }
+           
         
             stage( ' Build image ' ){
                 agent any
@@ -55,14 +51,6 @@ pipeline {
                          
             }
             
-
-           
-
-
-
-
-
-
             
             stage( 'Upload Image to ACR ' ){
               
@@ -102,14 +90,8 @@ pipeline {
             }
 
 
-
-
-
-
                 
-        }
+    }    
     
 }
-                
-    
-    
+       

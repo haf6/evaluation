@@ -1,5 +1,4 @@
 
-
 pipeline{
     agent none
  
@@ -20,8 +19,8 @@ pipeline{
                         sh 'mvn clean package -P MySQL '  
                 }
                  
-                
-                stage ( 'Run JMeter Test' ){
+            }  
+            stage ( 'Run JMeter Test' ){
                 agent any
                 
                     steps { sh "/home/hafidha/apache-jmeter-5.3/bin/jmeter -Jjmeter.save.saveservice.output_format=xml -n -t src/test/jmeter/petclinic_test_plan.jmx -l test.jtl"
@@ -31,7 +30,7 @@ pipeline{
 
                     }
 
-                }
+            }
 
            
 
@@ -61,7 +60,7 @@ pipeline{
 
                         dockerImage.push()} 
                    
-                    }
+                     }
                 }
                          
             }

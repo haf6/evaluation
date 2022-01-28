@@ -55,7 +55,7 @@ pipeline {
                 steps
                     {
                 
-                        sh 'az login --service-principal -u 085b75a2-504b-4099-a812-f9662270ddd5 -p dpCF2Kip8-QRykP-tf9So48wF_zF~G_7hp -t d1859195-72dc-49c3-a815-5d4106a85dfb'
+                        sh 'az login --service-principal -u 085b75a2-504b-4099-a812-f9662270ddd5 -p J7N5WTR.ym-Hhc~KXUHDwk2-tBiSjeZ34W -t d1859195-72dc-49c3-a815-5d4106a85dfb'
                         
                         sh 'az aks get-credentials --resource-group mongroupeaks  --name aksclusterPC  --overwrite-existing'
                     }

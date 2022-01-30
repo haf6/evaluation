@@ -32,10 +32,7 @@ pipeline{
 
             }
 
-           
-
-             
-                           
+                       
            
         
             stage( ' Build image ' ){

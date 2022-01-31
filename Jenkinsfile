@@ -74,7 +74,7 @@ pipeline{
                         sh 'az aks get-credentials --resource-group mongroupeaks  --name aksclusterPC  --overwrite-existing'
                     }
             }      
-                    
+                   
 
             stage('Deploy') {
                 agent any

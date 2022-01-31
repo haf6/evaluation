@@ -10,19 +10,7 @@ pipeline{
         }
     
     stages{     
-            
-        stage('Cleaning') 
-        {   agent any 
-            steps {
-                echo 'Hello World'
-                sh 'docker ps -aq | xargs --no-run-if-empty docker stop' 
-                echo ' remove all docker containers' 
-                sh 'docker ps -aq | xargs --no-run-if-empty docker rm'
-               
-                  }
-            
-        }
-        
+       
         
         
             stage( ' Build - Maven package ' ){

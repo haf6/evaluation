@@ -79,7 +79,7 @@ pipeline{
                 
                     steps
                     {
-                    sh 'kubectl apply -f fichier.yaml '
+                    sh 'kubectl apply -f fichierpetclinic.yaml '
                     }
                 
             }

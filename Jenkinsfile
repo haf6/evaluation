@@ -18,7 +18,7 @@ pipeline{
                      steps {
                        echo 'bonjour'
                        sh ' mvn -version '
-                        sh 'mvn clean package -P MySQL '  
+                        //sh 'mvn clean package -P MySQL '  
                 }
                  
             }  
